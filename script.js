@@ -1,6 +1,6 @@
 /* eslint-disable no-plusplus */
 const KeyBoard = {
-  
+
   elements: {
     title: null,
     textAria: null,
