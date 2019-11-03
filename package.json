@@ -1,0 +1,25 @@
+{
+  "name": "codejam-virtual-keyboard",
+  "version": "1.0.0",
+  "description": "[task description](https://github.com/rolling-scopes-school/tasks/blob/master/tasks/codejam-virtual-keyboard.md)",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "./node_modules/.bin/eslint script.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatusVit/codejam-virtual-keyboard.git"
+  },
+  "author": "MatVi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MatusVit/codejam-virtual-keyboard/issues"
+  },
+  "homepage": "https://github.com/MatusVit/codejam-virtual-keyboard#readme",
+  "devDependencies": {
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2"
+  }
+}
