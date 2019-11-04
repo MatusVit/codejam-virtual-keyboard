@@ -49,19 +49,20 @@
 
 }
 
-.key-backspace,
-.key-capslock
+.backspace,
+.capslock
 {
     min-width: 48px;
     flex-grow: 1;
 }
 
-.key-enter,
-.key-shift {
+.enter,
+.shiftleft,
+.shiftright {
     flex-grow: 2;
 }
 
-.key-space {
+.space {
     min-width: 240px;
     flex-grow: 3;
 }

@@ -50,22 +50,23 @@
   color: rgba(0, 0, 0, 0.54);
 }
 
-.key-backspace,
-.key-capslock {
+.backspace,
+.capslock {
   min-width: 48px;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
 }
 
-.key-enter,
-.key-shift {
+.enter,
+.shiftleft,
+.shiftright {
   -webkit-box-flex: 2;
       -ms-flex-positive: 2;
           flex-grow: 2;
 }
 
-.key-space {
+.space {
   min-width: 240px;
   -webkit-box-flex: 3;
       -ms-flex-positive: 3;
