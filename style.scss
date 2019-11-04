@@ -1,10 +1,16 @@
 .title {
     text-align: center;
-    color:  rgba(0, 0, 0, 0.80);
+    color: rgba(0, 0, 0, 0.80);
+}
+
+
+textarea:focus {
+    outline: 7px solid rgba(0, 121, 70, 0.24);;
 }
 
 .textarea {
     margin: 16px auto;
+    padding: 8px;
     display: block;
     width: 700px;
     height: 300px;
@@ -20,10 +26,13 @@
     text-align: center;
 }
 
-.keys-row{
+.keys-row {
     display: flex;
     justify-content: space-between;
+}
 
+button:focus {
+    outline: 0;
 }
 
 .key {
@@ -34,24 +43,20 @@
     border-radius: 5px;
     background-color: #fff;
     cursor: pointer;
-
-    &:active{
+    &:active {
         background-color: rgba(0, 0, 0, 0.16);
     }
-
 }
 
 .key--function {
     min-width: 48px;
     width: 6%;
     background-color: rgb(240, 240, 240);
-    color:  rgba(0, 0, 0, 0.54);
-
+    color: rgba(0, 0, 0, 0.54);
 }
 
 .backspace,
-.capslock
-{
+.capslock {
     min-width: 48px;
     flex-grow: 1;
 }
@@ -65,4 +70,8 @@
 .space {
     min-width: 240px;
     flex-grow: 3;
+}
+
+.active {
+    background-color: rgba(0, 0, 0, 0.16);
 }

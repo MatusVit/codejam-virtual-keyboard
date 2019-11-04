@@ -3,8 +3,13 @@
   color: rgba(0, 0, 0, 0.8);
 }
 
+textarea:focus {
+  outline: 7px solid rgba(0, 121, 70, 0.24);
+}
+
 .textarea {
   margin: 16px auto;
+  padding: 8px;
   display: block;
   width: 700px;
   height: 300px;
@@ -27,6 +32,10 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+button:focus {
+  outline: 0;
 }
 
 .key {
@@ -71,5 +80,9 @@
   -webkit-box-flex: 3;
       -ms-flex-positive: 3;
           flex-grow: 3;
+}
+
+.active {
+  background-color: rgba(0, 0, 0, 0.16);
 }
 /*# sourceMappingURL=style.css.map */

@@ -17,11 +17,9 @@ const KeyBoard = {
 
   handles: {
     handleKeyBoard: null,
-
   },
 
   inputAria: {
-    value: '',
     languageToggle: 'en',
     capsLockToggle: false,
   },
@@ -51,6 +49,8 @@ const KeyBoard = {
     return elm;
   },
 
+
+
   init() {
     // add title
     this.elements.title = this.createNewElement('h1', 'title', 'Virtual KeyBoard');
@@ -59,6 +59,7 @@ const KeyBoard = {
     // add text aria
     this.elements.textAria = this.createNewElement('textarea', 'textarea', '');
     document.body.append(this.elements.textAria);
+    this.elements.textAria.value = 'enter text here'
 
     // add keyBox with keys
     this.elements.keyBox = this.createNewElement('div', 'keyboard', '');
@@ -79,22 +80,30 @@ const KeyBoard = {
       }
       this.elements.keyBox.append(keysRow);
     }
+
     document.body.append(this.elements.keyBox);
 
+    // EventListener keydown
     window.addEventListener("keydown", (event) => {
-      let codeClass = event.code.toLowerCase();
-      let elm = document.body.getElementsByClassName(codeClass);
-     // todo error !!!
-      elm.classList.toggle('active');
-      
+      let selector = `.key.${event.code.toLowerCase()}`;
+      let elm = this.elements.keyBox.querySelector(selector);
+      if (!elm) return;
+      elm.classList.add('active');
     });
 
-
-
+    // EventListener keyup
+    window.addEventListener("keyup", (event) => {
+      let selector = `.key.${event.code.toLowerCase()}`;
+      let elm = this.elements.keyBox.querySelector(selector);
+      if (!elm) return;
+      elm.classList.remove('active');
+    });
 
   },
 
-  // handleKeyBoard(event){
+
+
+  // handleKeyBoard(event) {
   //   let target = ev.target;
   //   while (!(target.classList.contains('key'))) {
   //     if (target.tagName == 'button') {
@@ -104,11 +113,8 @@ const KeyBoard = {
   //     target = target.parentNode;
   //   }
   // },
-
 };
 
 window.addEventListener('DOMContentLoaded', () => {
   KeyBoard.init();
 })
-
-
