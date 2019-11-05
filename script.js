@@ -12,7 +12,7 @@ const KeyBoard = {
       ['ShiftLeft', 'KeyZ', 'KeyX', 'KeyC', 'KeyV', 'KeyB', 'KeyN', 'KeyM', 'Comma', 'Period', 'Slash', 'ShiftRight'],
       ['ControlLeft', 'win', 'AltLeft', 'Space', 'AltRight', 'win', 'ControlRight'],
     ],
-    functionKeys: ['BackSpace', 'Tab', 'Delete', 'CapsLock', 'Enter', 'ShiftLeft', 'ShiftRight', 'ControlLeft', 'win', 'AltLeft', 'Space', 'AltRight', 'ControlRight'],
+    functionKeys: ['BackSpace', 'Tab', 'Delete', 'CapsLock', 'Enter', 'ShiftLeft', 'ShiftRight', 'ControlLeft', 'win', 'AltLeft', 'AltRight', 'ControlRight'],
   },
 
   handles: {
@@ -53,7 +53,7 @@ const KeyBoard = {
 
 
 
-  // method for create KexBox element, arguments:(array keys, array function keys)
+  // method for create KexBox element, arguments:array keys, array function keys
   createKeyBox(arrKeys, arrFuncKeys) {
     const keyBox = this.createNewElement('div', 'keyboard', '');
 
@@ -104,7 +104,6 @@ const KeyBoard = {
 
   //method type from screen keys
   type(scr) {
-  // debugger;    
     let text = this.elements.textAria.value;
     let st = this.elements.textAria.selectionStart;
     let end = this.elements.textAria.selectionEnd;
@@ -135,10 +134,25 @@ const KeyBoard = {
 
     // add EventListener keydown
     window.addEventListener("keydown", (event) => {
+      
       let selector = `.key.${event.code.toLowerCase()}`;
       let elm = this.elements.keyBox.querySelector(selector);
       if (!elm) return;
       elm.classList.add('active');
+      
+      if( !(this.elements.functionKeys.includes(elm.dataset.keyCode)) ) {
+        let char = elm.textContent;
+        this.type(char);
+      }
+      
+      
+      
+      if ((event.ctrlKey && event.altKey)){ //Ctrl+Shift - switch language
+        this.switchLanguageLayout();
+      };
+
+
+      event.preventDefault();
     });
 
     // EventListener keyup
@@ -154,28 +168,13 @@ const KeyBoard = {
       let target = event.target;
 
       if (target.classList.contains('key')) {
-          let char = target.textContent;
-          this.type(char);
-          return;
-        }
+        let char = target.textContent;
+        this.type(char);
+        return;
+      }
     });
-
-
-    // this.switchLanguageLayout();
   },
-
-
-
-  // handleKeyBoard(event) {
-  //   let target = ev.target;
-  //   while (!(target.classList.contains('key'))) {
-  //     if (target.tagName == 'button') {
-  //       target.classList.toggle(':active');
-  //       return;
-  //     }
-  //     target = target.parentNode;
-  //   }
-  // },
+  
 };
 
 
@@ -186,4 +185,14 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 // todo
-// 
+// +-- keyboard type key content
+// backspace
+// delete
+// enter
+// tab
+// shift
+// capsLock - upperCase
+// save language layout after reload
+// animation keys
+// lint 
+// gh-pages 
