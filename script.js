@@ -15,10 +15,6 @@ const KeyBoard = {
     functionKeys: ['BackSpace', 'Tab', 'Delete', 'CapsLock', 'Enter', 'ShiftLeft', 'ShiftRight', 'ControlLeft', 'win', 'AltLeft', 'AltRight', 'ControlRight'],
   },
 
-  handles: {
-    handleKeyBoard: null,
-  },
-
   inputAria: {
     languageToggle: 'en',
     capsLockToggle: false,
@@ -26,18 +22,37 @@ const KeyBoard = {
 
   language: {
     en: {
-      'Backquote': '`', 'Digit1': '1', 'Digit2': '2', 'Digit3': '3', 'Digit4': '4', 'Digit5': '5', 'Digit6': '6', 'Digit7': '7', 'Digit8': '8', 'Digit9': '9', 'Digit0': '0', 'Minus': '-', 'Equal': '=', 'BackSpace': 'BackSpace',
-      'Tab': 'Tab', 'KeyQ': 'q', 'KeyW': 'w', 'KeyE': 'e', 'KeyR': 'r', 'KeyT': 't', 'KeyY': 'y', 'KeyU': 'u', 'KeyI': 'i', 'KeyO': 'o', 'KeyP': 'p', 'BracketLeft': '[', 'BracketRight': ']', 'Backslash': '\\', 'Delete': 'del',
-      'CapsLock': 'CapsLock', 'KeyA': 'a', 'KeyS': 's', 'KeyD': 'd', 'KeyF': 'f', 'KeyG': 'g', 'KeyH': 'h', 'KeyJ': 'j', 'KeyK': 'k', 'KeyL': 'l', 'Semicolon': ';', 'Quote': '\'', 'Enter': 'Enter',
-      'ShiftLeft': 'Shift', 'KeyZ': 'z', 'KeyX': 'x', 'KeyC': 'c', 'KeyV': 'v', 'KeyB': 'b', 'KeyN': 'n', 'KeyM': 'm', 'Comma': ',', 'Period': '.', 'Slash': '/', 'ShiftRight': 'Shift',
-      'ControlLeft': 'Ctrl', 'win': 'win', 'AltLeft': 'Alt', 'Space': ' ', 'AltRight': 'Alt', 'win': 'win', 'ControlRight': 'Ctrl',
+      lowerCase: {
+        'Backquote': '`', 'Digit1': '1', 'Digit2': '2', 'Digit3': '3', 'Digit4': '4', 'Digit5': '5', 'Digit6': '6', 'Digit7': '7', 'Digit8': '8', 'Digit9': '9', 'Digit0': '0', 'Minus': '-', 'Equal': '=', 'BackSpace': 'BackSpace',
+        'Tab': 'Tab', 'KeyQ': 'q', 'KeyW': 'w', 'KeyE': 'e', 'KeyR': 'r', 'KeyT': 't', 'KeyY': 'y', 'KeyU': 'u', 'KeyI': 'i', 'KeyO': 'o', 'KeyP': 'p', 'BracketLeft': '[', 'BracketRight': ']', 'Backslash': '\\', 'Delete': 'del',
+        'CapsLock': 'CapsLock', 'KeyA': 'a', 'KeyS': 's', 'KeyD': 'd', 'KeyF': 'f', 'KeyG': 'g', 'KeyH': 'h', 'KeyJ': 'j', 'KeyK': 'k', 'KeyL': 'l', 'Semicolon': ';', 'Quote': '\'', 'Enter': 'Enter',
+        'ShiftLeft': 'Shift', 'KeyZ': 'z', 'KeyX': 'x', 'KeyC': 'c', 'KeyV': 'v', 'KeyB': 'b', 'KeyN': 'n', 'KeyM': 'm', 'Comma': ',', 'Period': '.', 'Slash': '/', 'ShiftRight': 'Shift',
+        'ControlLeft': 'Ctrl', 'win': 'win', 'AltLeft': 'Alt', 'Space': ' ', 'AltRight': 'Alt', 'win': 'win', 'ControlRight': 'Ctrl',
+      },
+      shift: {
+        'Backquote': '~', 'Digit1': '!', 'Digit2': '@', 'Digit3': '#', 'Digit4': '$', 'Digit5': '%', 'Digit6': '^', 'Digit7': '&', 'Digit8': '*', 'Digit9': '(', 'Digit0': ')', 'Minus': '_', 'Equal': '+', 'BackSpace': 'BackSpace',
+        'Tab': 'Tab', 'KeyQ': 'Q', 'KeyW': 'W', 'KeyE': 'E', 'KeyR': 'R', 'KeyT': 'T', 'KeyY': 'Y', 'KeyU': 'U', 'KeyI': 'I', 'KeyO': 'O', 'KeyP': 'P', 'BracketLeft': '{', 'BracketRight': '}', 'Backslash': '|', 'Delete': 'del',
+        'CapsLock': 'CapsLock', 'KeyA': 'A', 'KeyS': 'S', 'KeyD': 'D', 'KeyF': 'F', 'KeyG': 'G', 'KeyH': 'H', 'KeyJ': 'J', 'KeyK': 'K', 'KeyL': 'L', 'Semicolon': ':', 'Quote': '\"', 'Enter': 'Enter',
+        'ShiftLeft': 'Shift', 'KeyZ': 'Z', 'KeyX': 'X', 'KeyC': 'C', 'KeyV': 'V', 'KeyB': 'B', 'KeyN': 'N', 'KeyM': 'M', 'Comma': '<', 'Period': '>', 'Slash': '?', 'ShiftRight': 'Shift',
+        'ControlLeft': 'Ctrl', 'win': 'win', 'AltLeft': 'Alt', 'Space': ' ', 'AltRight': 'Alt', 'win': 'win', 'ControlRight': 'Ctrl',
+      },
     },
+
     ru: {
-      'Backquote': 'ё', 'Digit1': '1', 'Digit2': '2', 'Digit3': '3', 'Digit4': '4', 'Digit5': '5', 'Digit6': '6', 'Digit7': '7', 'Digit8': '8', 'Digit9': '9', 'Digit0': '0', 'Minus': '-', 'Equal': '=', 'BackSpace': 'BackSpace',
-      'Tab': 'Tab', 'KeyQ': 'й', 'KeyW': 'ц', 'KeyE': 'у', 'KeyR': 'к', 'KeyT': 'е', 'KeyY': 'н', 'KeyU': 'г', 'KeyI': 'ш', 'KeyO': 'щ', 'KeyP': 'з', 'BracketLeft': 'х', 'BracketRight': 'ъ', 'Backslash': '\\', 'Delete': 'del',
-      'CapsLock': 'CapsLock', 'KeyA': 'ф', 'KeyS': 'ы', 'KeyD': 'в', 'KeyF': 'а', 'KeyG': 'п', 'KeyH': 'р', 'KeyJ': 'о', 'KeyK': 'л', 'KeyL': 'д', 'Semicolon': 'ж', 'Quote': 'э', 'Enter': 'Enter',
-      'ShiftLeft': 'Shift', 'KeyZ': 'я', 'KeyX': 'ч', 'KeyC': 'с', 'KeyV': 'м', 'KeyB': 'и', 'KeyN': 'т', 'KeyM': 'ь', 'Comma': 'б', 'Period': 'ю', 'Slash': '.', 'ShiftRight': 'Shift',
-      'ControlLeft': 'Ctrl', 'win': 'win', 'AltLeft': 'Alt', 'Space': ' ', 'AltRight': 'Alt', 'win': 'win', 'ControlRight': 'Ctrl',
+      lowerCase: {
+        'Backquote': 'ё', 'Digit1': '1', 'Digit2': '2', 'Digit3': '3', 'Digit4': '4', 'Digit5': '5', 'Digit6': '6', 'Digit7': '7', 'Digit8': '8', 'Digit9': '9', 'Digit0': '0', 'Minus': '-', 'Equal': '=', 'BackSpace': 'BackSpace',
+        'Tab': 'Tab', 'KeyQ': 'й', 'KeyW': 'ц', 'KeyE': 'у', 'KeyR': 'к', 'KeyT': 'е', 'KeyY': 'н', 'KeyU': 'г', 'KeyI': 'ш', 'KeyO': 'щ', 'KeyP': 'з', 'BracketLeft': 'х', 'BracketRight': 'ъ', 'Backslash': '\\', 'Delete': 'del',
+        'CapsLock': 'CapsLock', 'KeyA': 'ф', 'KeyS': 'ы', 'KeyD': 'в', 'KeyF': 'а', 'KeyG': 'п', 'KeyH': 'р', 'KeyJ': 'о', 'KeyK': 'л', 'KeyL': 'д', 'Semicolon': 'ж', 'Quote': 'э', 'Enter': 'Enter',
+        'ShiftLeft': 'Shift', 'KeyZ': 'я', 'KeyX': 'ч', 'KeyC': 'с', 'KeyV': 'м', 'KeyB': 'и', 'KeyN': 'т', 'KeyM': 'ь', 'Comma': 'б', 'Period': 'ю', 'Slash': '.', 'ShiftRight': 'Shift',
+        'ControlLeft': 'Ctrl', 'win': 'win', 'AltLeft': 'Alt', 'Space': ' ', 'AltRight': 'Alt', 'win': 'win', 'ControlRight': 'Ctrl',
+      },
+      shift: {
+        'Backquote': 'Ё', 'Digit1': '!', 'Digit2': '"', 'Digit3': '№', 'Digit4': ';', 'Digit5': '%', 'Digit6': ':', 'Digit7': '?', 'Digit8': '*', 'Digit9': '(', 'Digit0': ')', 'Minus': '_', 'Equal': '+', 'BackSpace': 'BackSpace',
+        'Tab': 'Tab', 'KeyQ': 'Й', 'KeyW': 'Ц', 'KeyE': 'У', 'KeyR': 'К', 'KeyT': 'Е', 'KeyY': 'Н', 'KeyU': 'Г', 'KeyI': 'Ш', 'KeyO': 'Щ', 'KeyP': 'З', 'BracketLeft': 'Х', 'BracketRight': 'Ъ', 'Backslash': '/', 'Delete': 'del',
+        'CapsLock': 'CapsLock', 'KeyA': 'Ф', 'KeyS': 'Ы', 'KeyD': 'В', 'KeyF': 'А', 'KeyG': 'П', 'KeyH': 'Р', 'KeyJ': 'О', 'KeyK': 'Л', 'KeyL': 'Д', 'Semicolon': 'Ж', 'Quote': 'Э', 'Enter': 'Enter',
+        'ShiftLeft': 'Shift', 'KeyZ': 'Я', 'KeyX': 'Ч', 'KeyC': 'С', 'KeyV': 'М', 'KeyB': 'И', 'KeyN': 'Т', 'KeyM': 'Ь', 'Comma': 'Б', 'Period': 'Ю', 'Slash': ',', 'ShiftRight': 'Shift',
+        'ControlLeft': 'Ctrl', 'win': 'win', 'AltLeft': 'Alt', 'Space': ' ', 'AltRight': 'Alt', 'win': 'win', 'ControlRight': 'Ctrl',
+      },
     },
   },
 
@@ -84,11 +99,40 @@ const KeyBoard = {
     const arrKeys = this.elements.keyBox.querySelectorAll('.key');
 
     for (let elem of arrKeys) {
-      const keySymbol = this.language[languageToggle][elem.dataset.keyCode];
+      const keySymbol = this.language[languageToggle]['lowerCase'][elem.dataset.keyCode];
       elem.innerHTML = keySymbol;
     }
 
     this.inputAria.languageToggle = languageToggle;
+  },
+
+
+  // method , argument:(not)
+  setShiftDownLayout() {
+    const arrKeys = this.elements.keyBox.querySelectorAll('.key:not(.key--function)');
+
+    for (let elem of arrKeys) {
+      const keySymbol = this.language[this.inputAria.languageToggle]['shift'][elem.dataset.keyCode];
+      elem.innerHTML = keySymbol;
+    }
+  },
+
+  setShiftUpLayout() {
+    const arrKeys = this.elements.keyBox.querySelectorAll('.key');
+
+    for (let elem of arrKeys) {
+      const keySymbol = this.language[this.inputAria.languageToggle]['lowerCase'][elem.dataset.keyCode];
+      elem.innerHTML = keySymbol;
+    }
+  },
+
+  setCapsLock() {
+    const arrKeys = this.elements.keyBox.querySelectorAll('.key:not(.key--function)');
+
+    for (let elem of arrKeys) {
+      const keySymbol = elem.innerHTML.toUpperCase();
+      elem.innerHTML = keySymbol;
+    }
   },
 
 
@@ -113,6 +157,120 @@ const KeyBoard = {
     this.elements.textAria.selectionStart = this.elements.textAria.selectionEnd = st + 1;
   },
 
+  //method type Backspace key
+  typeBackspace() {
+    let text = this.elements.textAria.value;
+    let st = this.elements.textAria.selectionStart;
+    let end = this.elements.textAria.selectionEnd;
+
+    if (st === end) {
+      this.elements.textAria.value = text.substring(0, st - 1) + text.substring(end);
+      this.elements.textAria.selectionStart = this.elements.textAria.selectionEnd = st - 1;
+
+    }
+    else {
+      this.elements.textAria.value = text.substring(0, st) + text.substring(end);
+      this.elements.textAria.selectionStart = this.elements.textAria.selectionEnd = st;
+    }
+    this.elements.textAria.focus();
+  },
+
+  typeDelete() {
+    let text = this.elements.textAria.value;
+    let st = this.elements.textAria.selectionStart;
+    let end = this.elements.textAria.selectionEnd;
+
+    if (st === end) {
+      this.elements.textAria.value = text.substring(0, st) + text.substring(end + 1);
+      this.elements.textAria.selectionStart = this.elements.textAria.selectionEnd = st;
+
+    }
+    else {
+      this.elements.textAria.value = text.substring(0, st) + text.substring(end);
+      this.elements.textAria.selectionStart = this.elements.textAria.selectionEnd = st;
+    }
+    this.elements.textAria.focus();
+  },
+
+
+
+  handleFunctionKeys(keyCode) {
+    switch (keyCode) {
+      case 'BackSpace':
+        this.typeBackspace();
+        break;
+      case 'Delete':
+        // debugger;
+        this.typeDelete();
+        break;
+      case 'Enter':
+        this.type('\n')
+        break;
+      case 'Tab':
+        this.type('\t')
+        break;
+      case 'ShiftLeft':
+        this.setShiftDownLayout();
+        break;
+      case 'ShiftRight':
+        this.setShiftDownLayout();
+        break;
+      case 'CapsLock':
+        let elm = this.elements.keyBox.querySelector('button[data-key-code="CapsLock"]');
+        if (!this.inputAria.capsLockToggle) {
+          elm.classList.add('turn-on');
+          this.setCapsLock();
+          this.inputAria.capsLockToggle = true;
+        }
+        else {
+          elm.classList.remove('turn-on');
+          this.setShiftUpLayout();
+          this.inputAria.capsLockToggle = false;
+        }
+        break;
+
+      // todo
+    }
+  },
+
+
+
+  //method handle Event
+  handleEvent(event) {
+    let elm = this.elements.keyBox.querySelector(`button[data-key-code=${event.code}]`);
+    if (!elm) return;
+
+    switch (event.type) {
+      case 'keydown':
+        elm.classList.add('active');
+
+        if (!(this.elements.functionKeys.includes(elm.dataset.keyCode))) {
+          let char = elm.textContent;
+          this.type(char);
+        }
+        if (this.elements.functionKeys.includes(elm.dataset.keyCode)) {
+          this.handleFunctionKeys(elm.dataset.keyCode);
+        }
+
+
+        if ((event.ctrlKey && event.altKey)) { //Ctrl+Shift - switch language
+          this.switchLanguageLayout();
+        };
+
+        event.preventDefault();
+        break;
+
+      case 'keyup':
+        elm.classList.remove('active');
+        // todo
+        if (elm.dataset.keyCode === 'ShiftLeft' || elm.dataset.keyCode === 'ShiftRight') {
+          this.setShiftUpLayout();
+        };
+        break;
+    }
+
+  },
+
 
 
 
@@ -133,48 +291,35 @@ const KeyBoard = {
     document.body.append(this.elements.keyBox);
 
     // add EventListener keydown
-    window.addEventListener("keydown", (event) => {
-      
-      let selector = `.key.${event.code.toLowerCase()}`;
-      let elm = this.elements.keyBox.querySelector(selector);
-      if (!elm) return;
-      elm.classList.add('active');
-      
-      if( !(this.elements.functionKeys.includes(elm.dataset.keyCode)) ) {
-        let char = elm.textContent;
-        this.type(char);
-      }
-      
-      
-      
-      if ((event.ctrlKey && event.altKey)){ //Ctrl+Shift - switch language
-        this.switchLanguageLayout();
-      };
-
-
-      event.preventDefault();
-    });
+    window.addEventListener("keydown", (event) => this.handleEvent(event));
 
     // EventListener keyup
-    window.addEventListener("keyup", (event) => {
-      let selector = `.key.${event.code.toLowerCase()}`;
-      let elm = this.elements.keyBox.querySelector(selector);
-      if (!elm) return;
-      elm.classList.remove('active');
-    });
+    window.addEventListener("keyup", (event) => this.handleEvent(event));
 
     // EventListener keyBox
-    this.elements.keyBox.addEventListener("click", (event) => {
+    this.elements.keyBox.addEventListener("mousedown", (event) => {
       let target = event.target;
 
-      if (target.classList.contains('key')) {
+      if (target.classList.contains('key') && !(target.classList.contains('key--function'))) {
         let char = target.textContent;
         this.type(char);
-        return;
+      }
+
+      if (target.classList.contains('key--function')) {
+        this.handleFunctionKeys(target.dataset.keyCode);
       }
     });
+
+    this.elements.keyBox.addEventListener("mouseup", (event) => {
+      let target = event.target;
+
+      if (target.dataset.keyCode === 'ShiftLeft' || target.dataset.keyCode === 'ShiftRight') {
+        this.setShiftUpLayout();
+      }
+
+    });
   },
-  
+
 };
 
 
@@ -185,13 +330,13 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 // todo
-// +-- keyboard type key content
-// backspace
-// delete
-// enter
-// tab
-// shift
-// capsLock - upperCase
+// + keyboard type key content
+// + backspace
+// + delete
+// + enter
+// + tab
+// + shift
+// +- capsLock - upperCase
 // save language layout after reload
 // animation keys
 // lint 
