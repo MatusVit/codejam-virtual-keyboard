@@ -3,6 +3,14 @@
     color: rgba(0, 0, 0, 0.80);
 }
 
+.legend {
+    // text-align: center;
+    position: relative;
+    left: calc(50% - 360px);
+    font: 12px sans-serif;
+    color: rgba(0, 0, 0, 0.54);
+}
+
 
 textarea:focus {
     outline: 0;
@@ -44,8 +52,10 @@ button:focus {
     border-radius: 5px;
     background-color: #fff;
     cursor: pointer;
+       
     &:active {
         background-color: rgba(0, 0, 0, 0.16);
+        transform: translateY(4px);
     }
 }
 
@@ -75,6 +85,7 @@ button:focus {
 
 .active {
     background-color: rgba(0, 0, 0, 0.16);
+    transform: translateY(4px);
 }
 
 .turn-on {

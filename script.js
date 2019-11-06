@@ -104,6 +104,9 @@ const KeyBoard = {
     }
 
     this.inputAria.languageToggle = languageToggle;
+    localStorage.setItem('virtualKeyboardLang', languageToggle);
+    console.log('method setLanguageLayout - ' + localStorage.getItem('virtualKeyboardLang'));
+    
   },
 
 
@@ -195,6 +198,7 @@ const KeyBoard = {
 
 
   handleFunctionKeys(keyCode) {
+    
     switch (keyCode) {
       case 'BackSpace':
         this.typeBackspace();
@@ -228,8 +232,6 @@ const KeyBoard = {
           this.inputAria.capsLockToggle = false;
         }
         break;
-
-      // todo
     }
   },
 
@@ -276,6 +278,13 @@ const KeyBoard = {
 
   // initialization object KeyBoard
   init() {
+    //localStorage
+    if( localStorage.getItem('virtualKeyboardLang' === null) ){
+      console.log('localStorage === null');
+      localStorage.setItem('virtualKeyboardLang', 'en');
+    }
+    this.inputAria.languageToggle = localStorage.getItem('virtualKeyboardLang');
+    
     // add title
     this.elements.title = this.createNewElement('h1', 'title', 'Virtual KeyBoard');
     document.body.append(this.elements.title);
@@ -284,11 +293,18 @@ const KeyBoard = {
     this.elements.textAria = this.createNewElement('textarea', 'textarea', '');
     document.body.append(this.elements.textAria);
     this.elements.textAria.value = 'enter text here'
-
+    
+    // language layout legend 
+    this.elements.title = this.createNewElement('p', 'legend', 'Ctrl + Alt - language switch EN/RU');
+    document.body.append(this.elements.title);
+    
     // add keyBox with keys
     this.elements.keyBox = this.createKeyBox(this.elements.keys, this.elements.functionKeys);
     this.setLanguageLayout(this.inputAria.languageToggle);
     document.body.append(this.elements.keyBox);
+
+
+
 
     // add EventListener keydown
     window.addEventListener("keydown", (event) => this.handleEvent(event));
@@ -336,8 +352,8 @@ window.addEventListener('DOMContentLoaded', () => {
 // + enter
 // + tab
 // + shift
-// +- capsLock - upperCase
-// save language layout after reload
-// animation keys
+// + capsLock - upperCase
+// + save language layout after reload
+// + animation keys
 // lint 
 // gh-pages 
