@@ -332,7 +332,7 @@ const KeyBoard = {
   },
 
 
-  // method , argument:(not)
+  // method set uppercase keyboard when downKey Shift, argument:(not)
   setShiftDownLayout() {
     const arrKeys = this.elements.keyBox.querySelectorAll('.key:not(.key--function)');
 
@@ -343,6 +343,7 @@ const KeyBoard = {
     }
   },
 
+  // method set lowercase keyboard when upKey Shift, argument:(not)
   setShiftUpLayout() {
     const arrKeys = this.elements.keyBox.querySelectorAll('.key');
 
@@ -354,6 +355,7 @@ const KeyBoard = {
     }
   },
 
+  // method switch lowercase keyboard when upKey CapsLock, argument:(not)
   setCapsLock() {
     const arrKeys = this.elements.keyBox.querySelectorAll('.key:not(.key--function)');
 
@@ -407,7 +409,7 @@ const KeyBoard = {
     }
     this.elements.textAria.focus();
   },
-
+  // method delete symbol in textAria
   typeDelete() {
     const text = this.elements.textAria.value;
     const st = this.elements.textAria.selectionStart;
@@ -427,7 +429,7 @@ const KeyBoard = {
     this.elements.textAria.focus();
   },
 
-
+  // method handle FunctionKeys
   handleFunctionKeys(keyCode) {
     switch (keyCode) {
       case 'BackSpace':
@@ -466,7 +468,7 @@ const KeyBoard = {
   },
 
 
-  // method handle Event
+  // method handle events of keyBoard: keydown, 'keyup'
   handleEvent(event) {
     const elm = this.elements.keyBox.querySelector(`button[data-key-code=${event.code}]`);
     if (!elm) return;
@@ -506,7 +508,8 @@ const KeyBoard = {
   // initialization object KeyBoard
   init() {
     // localStorage
-    if (localStorage.getItem('virtualKeyboardLang' === null)) {
+    if (!(Object.prototype.hasOwnProperty.call(localStorage, 'virtualKeyboardLang'))) {
+      // if (localStorage.hasOwnProperty('virtualKeyboardLang')) {
       localStorage.setItem('virtualKeyboardLang', 'en');
     }
     this.inputAria.languageToggle = localStorage.getItem('virtualKeyboardLang');
@@ -518,7 +521,7 @@ const KeyBoard = {
     // add text aria
     this.elements.textAria = this.createNewElement('textarea', 'textarea', '');
     document.body.append(this.elements.textAria);
-    this.elements.textAria.value = 'enter text here';
+    // this.elements.textAria.value = 'enter text here';
 
     // language layout legend
     this.elements.title = this.createNewElement('p', 'legend', 'Ctrl + Alt - language switch EN/RU');
@@ -549,7 +552,7 @@ const KeyBoard = {
         this.handleFunctionKeys(target.dataset.keyCode);
       }
     });
-
+    // EventListener keyBox
     this.elements.keyBox.addEventListener('mouseup', (event) => {
       const { target } = event;
 
