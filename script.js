@@ -384,8 +384,6 @@ const KeyBoard = {
     const end = this.elements.textAria.selectionEnd;
 
     this.elements.textAria.value = text.substring(0, st) + scr + text.substring(end);
-    this.elements.textAria.focus();
-
     this.elements.textAria.selectionStart = st + 1;
     this.elements.textAria.selectionEnd = st + 1;
   },
@@ -409,6 +407,7 @@ const KeyBoard = {
     }
     this.elements.textAria.focus();
   },
+
   // method delete symbol in textAria
   typeDelete() {
     const text = this.elements.textAria.value;
@@ -419,7 +418,6 @@ const KeyBoard = {
       this.elements.textAria.value = text.substring(0, st) + text.substring(end + 1);
       this.elements.textAria.selectionStart = st;
       this.elements.textAria.selectionEnd = st;
-
     }
     else {
       this.elements.textAria.value = text.substring(0, st) + text.substring(end);
@@ -485,7 +483,6 @@ const KeyBoard = {
           this.handleFunctionKeys(elm.dataset.keyCode);
         }
 
-
         if ((event.ctrlKey && event.altKey)) { // Ctrl+Shift - switch language
           this.switchLanguageLayout();
         };
@@ -503,7 +500,6 @@ const KeyBoard = {
       // no default
     }
   },
-
 
   // initialization object KeyBoard
   init() {
@@ -524,14 +520,13 @@ const KeyBoard = {
     // this.elements.textAria.value = 'enter text here';
 
     // language layout legend
-    this.elements.title = this.createNewElement('p', 'legend', 'Ctrl + Alt - language switch EN/RU');
+    this.elements.title = this.createNewElement('p', 'legend', 'Ctrl + Alt - language switch EN/RU, OS Windows');
     document.body.append(this.elements.title);
 
     // add keyBox with keys
     this.elements.keyBox = this.createKeyBox(this.elements.keys, this.elements.functionKeys);
     this.setLanguageLayout(this.inputAria.languageToggle);
     document.body.append(this.elements.keyBox);
-
 
     // add EventListener keydown
     window.addEventListener('keydown', (event) => this.handleEvent(event));
@@ -546,20 +541,26 @@ const KeyBoard = {
       if (target.classList.contains('key') && !(target.classList.contains('key--function'))) {
         const char = target.textContent;
         this.type(char);
-      }
+      };
 
       if (target.classList.contains('key--function')) {
         this.handleFunctionKeys(target.dataset.keyCode);
-      }
+      };
+      
     });
-    // EventListener keyBox
+
+    // EventListener keyBox 
     this.elements.keyBox.addEventListener('mouseup', (event) => {
       const { target } = event;
 
       if (target.dataset.keyCode === 'ShiftLeft' || target.dataset.keyCode === 'ShiftRight') {
         this.setShiftUpLayout();
       }
+
+      this.elements.textAria.focus();
     });
+
+    this.elements.textAria.focus();
   },
 
 };
