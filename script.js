@@ -10,8 +10,8 @@ const KeyBoard = {
       ['Backquote', 'Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', 'Digit6', 'Digit7', 'Digit8', 'Digit9', 'Digit0', 'Minus', 'Equal', 'BackSpace'],
       ['Tab', 'KeyQ', 'KeyW', 'KeyE', 'KeyR', 'KeyT', 'KeyY', 'KeyU', 'KeyI', 'KeyO', 'KeyP', 'BracketLeft', 'BracketRight', 'Backslash', 'Delete'],
       ['CapsLock', 'KeyA', 'KeyS', 'KeyD', 'KeyF', 'KeyG', 'KeyH', 'KeyJ', 'KeyK', 'KeyL', 'Semicolon', 'Quote', 'Enter'],
-      ['ShiftLeft', 'KeyZ', 'KeyX', 'KeyC', 'KeyV', 'KeyB', 'KeyN', 'KeyM', 'Comma', 'Period', 'Slash', 'ShiftRight'],
-      ['ControlLeft', 'win', 'AltLeft', 'Space', 'AltRight', 'win', 'ControlRight'],
+      ['ShiftLeft', 'KeyZ', 'KeyX', 'KeyC', 'KeyV', 'KeyB', 'KeyN', 'KeyM', 'Comma', 'Period', 'Slash', 'ArrowUp', 'ShiftRight'],
+      ['ControlLeft', 'win', 'AltLeft', 'Space', 'AltRight', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'ControlRight'],
     ],
     functionKeys: ['BackSpace', 'Tab', 'Delete', 'CapsLock', 'Enter', 'ShiftLeft', 'ShiftRight', 'ControlLeft', 'win', 'AltLeft', 'AltRight', 'ControlRight'],
   },
@@ -83,9 +83,11 @@ const KeyBoard = {
         AltLeft: 'Alt',
         Space: ' ',
         AltRight: 'Alt',
-        // eslint-disable-next-line no-dupe-keys
-        win: 'win',
         ControlRight: 'Ctrl',
+        ArrowUp: '&#8593;',
+        ArrowRight: '&#8594;',
+        ArrowDown: '&#8595;',
+        ArrowLeft: '&#8592;',
       },
       shift: {
         Backquote: '~',
@@ -147,8 +149,11 @@ const KeyBoard = {
         AltLeft: 'Alt',
         Space: ' ',
         AltRight: 'Alt',
-        win: 'win',
         ControlRight: 'Ctrl',
+        ArrowUp: '&#8593;',
+        ArrowRight: '&#8594;',
+        ArrowDown: '&#8595;',
+        ArrowLeft: '&#8592;',
       },
     },
 
@@ -213,8 +218,11 @@ const KeyBoard = {
         AltLeft: 'Alt',
         Space: ' ',
         AltRight: 'Alt',
-        win: 'win',
         ControlRight: 'Ctrl',
+        ArrowUp: '&#8593;',
+        ArrowRight: '&#8594;',
+        ArrowDown: '&#8595;',
+        ArrowLeft: '&#8592;',
       },
       shift: {
         Backquote: 'Ё',
@@ -276,8 +284,11 @@ const KeyBoard = {
         AltLeft: 'Alt',
         Space: ' ',
         AltRight: 'Alt',
-        win: 'win',
         ControlRight: 'Ctrl',
+        ArrowUp: '&#8593;',
+        ArrowRight: '&#8594;',
+        ArrowDown: '&#8595;',
+        ArrowLeft: '&#8592;',
       },
     },
   },
@@ -383,7 +394,7 @@ const KeyBoard = {
     const st = this.elements.textAria.selectionStart;
     const end = this.elements.textAria.selectionEnd;
 
-    this.elements.textAria.value = text.substring(0, st) + scr + text.substring(end);
+    this.elements.textAria.value = `${text.substring(0, st)}${scr}${text.substring(end)}`;
     this.elements.textAria.selectionStart = st + 1;
     this.elements.textAria.selectionEnd = st + 1;
   },
