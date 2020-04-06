@@ -5,6 +5,7 @@
 
 .legend {
   position: relative;
+  width: fit-content;
   left: calc(50% - 360px);
   font: 12px sans-serif;
   color: rgba(0, 0, 0, 0.54);
