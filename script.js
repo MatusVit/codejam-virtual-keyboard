@@ -1,5 +1,3 @@
-/* eslint-disable no-dupe-keys */
-/* eslint-disable no-plusplus */
 const KeyBoard = {
 
   elements: {
@@ -307,14 +305,13 @@ const KeyBoard = {
   createKeyBox(arrKeys, arrFuncKeys) {
     const keyBox = this.createNewElement('div', 'keyboard', '');
 
-    for (let i = 0; i < arrKeys.length; i++) {
+    for (let i = 0; i < arrKeys.length; i += 1) {
       const keysRow = this.createNewElement('div', 'keys-row', '');
 
-      for (let j = 0; j < arrKeys[i].length; j++) {
+      for (let j = 0; j < arrKeys[i].length; j += 1) {
         const key = arrKeys[i][j];
         let classesStr = `key ${key}`.toLowerCase();
 
-        // add .key--function for function keys
         if (arrFuncKeys.includes(key)) classesStr = `${classesStr} key--function`;
 
         const keyElm = this.createNewElement('button', classesStr, '');
@@ -323,7 +320,6 @@ const KeyBoard = {
       }
       keyBox.append(keysRow);
     }
-
     return keyBox;
   },
 
@@ -331,13 +327,11 @@ const KeyBoard = {
   // method for make keyboard language layout, argument:('en' or 'ru')
   setLanguageLayout(languageToggle) {
     const arrKeys = this.elements.keyBox.querySelectorAll('.key');
-
-    // eslint-disable-next-line no-restricted-syntax
-    for (const elem of arrKeys) {
+    for (let i = 0; i < arrKeys.length; i += 1) {
+      const elem = arrKeys[i];
       const keySymbol = this.language[languageToggle].lowerCase[elem.dataset.keyCode];
       elem.innerHTML = keySymbol;
     }
-
     this.inputAria.languageToggle = languageToggle;
     localStorage.setItem('virtualKeyboardLang', languageToggle);
   },
@@ -346,32 +340,32 @@ const KeyBoard = {
   // method set uppercase keyboard when downKey Shift, argument:(not)
   setShiftDownLayout() {
     const arrKeys = this.elements.keyBox.querySelectorAll('.key:not(.key--function)');
-
-    // eslint-disable-next-line no-restricted-syntax
-    for (const elem of arrKeys) {
+    for (let i = 0; i < arrKeys.length; i += 1) {
+      const elem = arrKeys[i];
       const keySymbol = this.language[this.inputAria.languageToggle].shift[elem.dataset.keyCode];
       elem.innerHTML = keySymbol;
     }
   },
 
+
   // method set lowercase keyboard when upKey Shift, argument:(not)
   setShiftUpLayout() {
     const arrKeys = this.elements.keyBox.querySelectorAll('.key');
-
-    // eslint-disable-next-line no-restricted-syntax
-    for (const elem of arrKeys) {
-      // eslint-disable-next-line max-len
-      const keySymbol = this.language[this.inputAria.languageToggle].lowerCase[elem.dataset.keyCode];
+    for (let i = 0; i < arrKeys.length; i += 1) {
+      const elem = arrKeys[i];
+      const keySymbol = this.language[this.inputAria.languageToggle]
+        .lowerCase[elem.dataset.keyCode];
       elem.innerHTML = keySymbol;
     }
   },
+
 
   // method switch lowercase keyboard when upKey CapsLock, argument:(not)
   setCapsLock() {
     const arrKeys = this.elements.keyBox.querySelectorAll('.key:not(.key--function)');
 
-    // eslint-disable-next-line no-restricted-syntax
-    for (const elem of arrKeys) {
+    for (let i = 0; i < arrKeys.length; i += 1) {
+      const elem = arrKeys[i];
       const keySymbol = elem.innerHTML.toUpperCase();
       elem.innerHTML = keySymbol;
     }
@@ -388,6 +382,7 @@ const KeyBoard = {
     this.setLanguageLayout(this.inputAria.languageToggle);
   },
 
+
   // method type from screen keys
   type(scr) {
     const text = this.elements.textAria.value;
@@ -399,6 +394,7 @@ const KeyBoard = {
     this.elements.textAria.selectionEnd = st + 1;
   },
 
+
   // method type Backspace key
   typeBackspace() {
     const text = this.elements.textAria.value;
@@ -409,15 +405,14 @@ const KeyBoard = {
       this.elements.textAria.value = text.substring(0, st - 1) + text.substring(end);
       this.elements.textAria.selectionStart = st - 1;
       this.elements.textAria.selectionEnd = st - 1;
-
-    }
-    else {
+    } else {
       this.elements.textAria.value = text.substring(0, st) + text.substring(end);
       this.elements.textAria.selectionStart = st;
       this.elements.textAria.selectionEnd = st;
     }
     this.elements.textAria.focus();
   },
+
 
   // method delete symbol in textAria
   typeDelete() {
@@ -429,14 +424,29 @@ const KeyBoard = {
       this.elements.textAria.value = text.substring(0, st) + text.substring(end + 1);
       this.elements.textAria.selectionStart = st;
       this.elements.textAria.selectionEnd = st;
-    }
-    else {
+    } else {
       this.elements.textAria.value = text.substring(0, st) + text.substring(end);
       this.elements.textAria.selectionStart = st;
       this.elements.textAria.selectionEnd = st;
     }
     this.elements.textAria.focus();
   },
+
+
+  // method toggle CapsLock
+  toggleCapsLock() {
+    const elm = this.elements.keyBox.querySelector('button[data-key-code="CapsLock"]');
+    if (!this.inputAria.capsLockToggle) {
+      elm.classList.add('turn-on');
+      this.setCapsLock();
+      this.inputAria.capsLockToggle = true;
+    } else {
+      elm.classList.remove('turn-on');
+      this.setShiftUpLayout();
+      this.inputAria.capsLockToggle = false;
+    }
+  },
+
 
   // method handle FunctionKeys
   handleFunctionKeys(keyCode) {
@@ -448,7 +458,7 @@ const KeyBoard = {
         this.typeDelete();
         break;
       case 'Enter':
-        this.type('\n')
+        this.type('\n');
         break;
       case 'Tab':
         this.type('\t');
@@ -460,17 +470,7 @@ const KeyBoard = {
         this.setShiftDownLayout();
         break;
       case 'CapsLock':
-        // eslint-disable-next-line no-case-declarations
-        const elm = this.elements.keyBox.querySelector('button[data-key-code="CapsLock"]');
-        if (!this.inputAria.capsLockToggle) {
-          elm.classList.add('turn-on');
-          this.setCapsLock();
-          this.inputAria.capsLockToggle = true;
-        } else {
-          elm.classList.remove('turn-on');
-          this.setShiftUpLayout();
-          this.inputAria.capsLockToggle = false;
-        }
+        this.toggleCapsLock();
         break;
       // no default
     }
@@ -485,7 +485,6 @@ const KeyBoard = {
     switch (event.type) {
       case 'keydown':
         elm.classList.add('active');
-
         if (!(this.elements.functionKeys.includes(elm.dataset.keyCode))) {
           const char = elm.textContent;
           this.type(char);
@@ -493,24 +492,22 @@ const KeyBoard = {
         if (this.elements.functionKeys.includes(elm.dataset.keyCode)) {
           this.handleFunctionKeys(elm.dataset.keyCode);
         }
-
         if ((event.ctrlKey && event.altKey)) { // Ctrl+Shift - switch language
           this.switchLanguageLayout();
-        };
-
+        }
         event.preventDefault();
         break;
 
       case 'keyup':
         elm.classList.remove('active');
-        // todo
         if (elm.dataset.keyCode === 'ShiftLeft' || elm.dataset.keyCode === 'ShiftRight') {
           this.setShiftUpLayout();
-        };
+        }
         break;
       // no default
     }
   },
+
 
   // initialization object KeyBoard
   init() {
@@ -552,15 +549,14 @@ const KeyBoard = {
       if (target.classList.contains('key') && !(target.classList.contains('key--function'))) {
         const char = target.textContent;
         this.type(char);
-      };
+      }
 
       if (target.classList.contains('key--function')) {
         this.handleFunctionKeys(target.dataset.keyCode);
-      };
-      
+      }
     });
 
-    // EventListener keyBox 
+    // EventListener keyBox
     this.elements.keyBox.addEventListener('mouseup', (event) => {
       const { target } = event;
 
