@@ -1,3 +1,8 @@
+const LANGUAGES = {
+  ru: 'ru',
+  en: 'en',
+};
+
 const KeyBoard = {
   elements: {
     title: null,
@@ -65,7 +70,7 @@ const KeyBoard = {
         'Period',
         'Slash',
         'ArrowUp',
-        'ShiftRight'
+        'ShiftRight',
       ],
       [
         'ControlLeft',
@@ -452,10 +457,10 @@ const KeyBoard = {
 
   // method switch Language Layout for keyboard, argument:(not)
   switchLanguageLayout() {
-    if (this.inputArea.languageToggle === 'en') {
-      this.inputArea.languageToggle = 'ru';
-    } else if (this.inputArea.languageToggle === 'ru') {
-      this.inputArea.languageToggle = 'en';
+    if (this.inputArea.languageToggle === LANGUAGES.en) {
+      this.inputArea.languageToggle = LANGUAGES.ru;
+    } else if (this.inputArea.languageToggle === LANGUAGES.ru) {
+      this.inputArea.languageToggle = LANGUAGES.en;
     }
     this.setLanguageLayout(this.inputArea.languageToggle);
   },
@@ -643,9 +648,7 @@ const KeyBoard = {
 
     this.elements.textAria.focus();
   },
-
 };
-
 
 window.addEventListener('DOMContentLoaded', () => {
   KeyBoard.init();
