@@ -4,6 +4,16 @@
     en: 'en',
   };
 
+  const KEYCODE = {
+    Backspace: 'Backspace',
+    Delete: 'Delete',
+    Enter: 'Enter',
+    Tab: 'Tab',
+    ShiftLeft: 'ShiftLeft',
+    ShiftRight: 'ShiftRight',
+    CapsLock: 'CapsLock',
+  };
+
   const KeyBoard = {
     elements: {
       title: null,
@@ -533,25 +543,25 @@
 
     handleFunctionKeys(keyCode) {
       switch (keyCode) {
-        case 'Backspace':
+        case KEYCODE.Backspace:
           this.typeBackspace();
           break;
-        case 'Delete':
+        case KEYCODE.Delete:
           this.typeDelete();
           break;
-        case 'Enter':
+        case KEYCODE.Enter:
           this.type('\n');
           break;
-        case 'Tab':
+        case KEYCODE.Tab:
           this.type('\t');
           break;
-        case 'ShiftLeft':
+        case KEYCODE.ShiftLeft:
           this.setShiftDownLayout();
           break;
-        case 'ShiftRight':
+        case KEYCODE.ShiftRight:
           this.setShiftDownLayout();
           break;
-        case 'CapsLock':
+        case KEYCODE.CapsLock:
           this.toggleCapsLock();
           break;
         // no default
