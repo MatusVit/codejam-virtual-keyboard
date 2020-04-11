@@ -95,7 +95,7 @@ const KeyBoard = {
     ],
   },
 
-  inputAria: {
+  inputArea: {
     languageToggle: 'en',
     capsLockToggle: false,
   },
@@ -407,11 +407,11 @@ const KeyBoard = {
   setLanguageLayout(languageToggle) {
     const arrKeys = this.elements.keyBox.querySelectorAll('.key');
     for (let i = 0; i < arrKeys.length; i += 1) {
-      const elem = arrKeys[i];
-      const keySymbol = this.language[languageToggle].lowerCase[elem.dataset.keyCode];
-      elem.innerHTML = keySymbol;
+      const element = arrKeys[i];
+      const keySymbol = this.language[languageToggle].lowerCase[element.dataset.keyCode];
+      element.innerHTML = keySymbol;
     }
-    this.inputAria.languageToggle = languageToggle;
+    this.inputArea.languageToggle = languageToggle;
     localStorage.setItem('virtualKeyboardLang', languageToggle);
   },
 
@@ -420,9 +420,9 @@ const KeyBoard = {
   setShiftDownLayout() {
     const arrKeys = this.elements.keyBox.querySelectorAll('.key:not(.key--function)');
     for (let i = 0; i < arrKeys.length; i += 1) {
-      const elem = arrKeys[i];
-      const keySymbol = this.language[this.inputAria.languageToggle].shift[elem.dataset.keyCode];
-      elem.innerHTML = keySymbol;
+      const element = arrKeys[i];
+      const keySymbol = this.language[this.inputArea.languageToggle].shift[element.dataset.keyCode];
+      element.innerHTML = keySymbol;
     }
   },
 
@@ -431,10 +431,10 @@ const KeyBoard = {
   setShiftUpLayout() {
     const arrKeys = this.elements.keyBox.querySelectorAll('.key');
     for (let i = 0; i < arrKeys.length; i += 1) {
-      const elem = arrKeys[i];
-      const keySymbol = this.language[this.inputAria.languageToggle]
-        .lowerCase[elem.dataset.keyCode];
-      elem.innerHTML = keySymbol;
+      const element = arrKeys[i];
+      const keySymbol = this.language[this.inputArea.languageToggle]
+        .lowerCase[element.dataset.keyCode];
+      element.innerHTML = keySymbol;
     }
   },
 
@@ -444,21 +444,21 @@ const KeyBoard = {
     const arrKeys = this.elements.keyBox.querySelectorAll('.key:not(.key--function)');
 
     for (let i = 0; i < arrKeys.length; i += 1) {
-      const elem = arrKeys[i];
-      const keySymbol = elem.innerHTML.toUpperCase();
-      elem.innerHTML = keySymbol;
+      const element = arrKeys[i];
+      const keySymbol = element.innerHTML.toUpperCase();
+      element.innerHTML = keySymbol;
     }
   },
 
 
   // method switch Language Layout for keyboard, argument:(not)
   switchLanguageLayout() {
-    if (this.inputAria.languageToggle === 'en') {
-      this.inputAria.languageToggle = 'ru';
-    } else if (this.inputAria.languageToggle === 'ru') {
-      this.inputAria.languageToggle = 'en';
+    if (this.inputArea.languageToggle === 'en') {
+      this.inputArea.languageToggle = 'ru';
+    } else if (this.inputArea.languageToggle === 'ru') {
+      this.inputArea.languageToggle = 'en';
     }
-    this.setLanguageLayout(this.inputAria.languageToggle);
+    this.setLanguageLayout(this.inputArea.languageToggle);
   },
 
 
@@ -515,14 +515,14 @@ const KeyBoard = {
   // method toggle CapsLock
   toggleCapsLock() {
     const element = this.elements.keyBox.querySelector('button[data-key-code="CapsLock"]');
-    if (!this.inputAria.capsLockToggle) {
+    if (!this.inputArea.capsLockToggle) {
       element.classList.add('turn-on');
       this.setCapsLock();
-      this.inputAria.capsLockToggle = true;
+      this.inputArea.capsLockToggle = true;
     } else {
       element.classList.remove('turn-on');
       this.setShiftUpLayout();
-      this.inputAria.capsLockToggle = false;
+      this.inputArea.capsLockToggle = false;
     }
   },
 
@@ -594,7 +594,7 @@ const KeyBoard = {
     if (!(Object.prototype.hasOwnProperty.call(localStorage, 'virtualKeyboardLang'))) {
       localStorage.setItem('virtualKeyboardLang', 'en');
     }
-    this.inputAria.languageToggle = localStorage.getItem('virtualKeyboardLang');
+    this.inputArea.languageToggle = localStorage.getItem('virtualKeyboardLang');
 
     // add title
     this.elements.title = this.createNewElement({ tag: 'h1', tagClass: 'title', tagText: 'Virtual KeyBoard' });
@@ -611,7 +611,7 @@ const KeyBoard = {
 
     // add keyBox with keys
     this.elements.keyBox = this.createKeyBox(this.elements.keys, this.elements.functionKeys);
-    this.setLanguageLayout(this.inputAria.languageToggle);
+    this.setLanguageLayout(this.inputArea.languageToggle);
     document.body.append(this.elements.keyBox);
 
     // add EventListener keydown
