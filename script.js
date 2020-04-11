@@ -1,17 +1,98 @@
 const KeyBoard = {
-
   elements: {
     title: null,
     textAria: null,
     keyBox: null,
     keys: [
-      ['Backquote', 'Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', 'Digit6', 'Digit7', 'Digit8', 'Digit9', 'Digit0', 'Minus', 'Equal', 'Backspace'],
-      ['Tab', 'KeyQ', 'KeyW', 'KeyE', 'KeyR', 'KeyT', 'KeyY', 'KeyU', 'KeyI', 'KeyO', 'KeyP', 'BracketLeft', 'BracketRight', 'Backslash', 'Delete'],
-      ['CapsLock', 'KeyA', 'KeyS', 'KeyD', 'KeyF', 'KeyG', 'KeyH', 'KeyJ', 'KeyK', 'KeyL', 'Semicolon', 'Quote', 'Enter'],
-      ['ShiftLeft', 'KeyZ', 'KeyX', 'KeyC', 'KeyV', 'KeyB', 'KeyN', 'KeyM', 'Comma', 'Period', 'Slash', 'ArrowUp', 'ShiftRight'],
-      ['ControlLeft', 'MetaLeft', 'AltLeft', 'Space', 'AltRight', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'ControlRight'],
+      [
+        'Backquote',
+        'Digit1',
+        'Digit2',
+        'Digit3',
+        'Digit4',
+        'Digit5',
+        'Digit6',
+        'Digit7',
+        'Digit8',
+        'Digit9',
+        'Digit0',
+        'Minus',
+        'Equal',
+        'Backspace',
+      ],
+      [
+        'Tab',
+        'KeyQ',
+        'KeyW',
+        'KeyE',
+        'KeyR',
+        'KeyT',
+        'KeyY',
+        'KeyU',
+        'KeyI',
+        'KeyO',
+        'KeyP',
+        'BracketLeft',
+        'BracketRight',
+        'Backslash',
+        'Delete',
+      ],
+      [
+        'CapsLock',
+        'KeyA',
+        'KeyS',
+        'KeyD',
+        'KeyF',
+        'KeyG',
+        'KeyH',
+        'KeyJ',
+        'KeyK',
+        'KeyL',
+        'Semicolon',
+        'Quote',
+        'Enter',
+      ],
+      [
+        'ShiftLeft',
+        'KeyZ',
+        'KeyX',
+        'KeyC',
+        'KeyV',
+        'KeyB',
+        'KeyN',
+        'KeyM',
+        'Comma',
+        'Period',
+        'Slash',
+        'ArrowUp',
+        'ShiftRight'
+      ],
+      [
+        'ControlLeft',
+        'MetaLeft',
+        'AltLeft',
+        'Space',
+        'AltRight',
+        'ArrowLeft',
+        'ArrowDown',
+        'ArrowRight',
+        'ControlRight',
+      ],
     ],
-    functionKeys: ['Backspace', 'Tab', 'Delete', 'CapsLock', 'Enter', 'ShiftLeft', 'ShiftRight', 'ControlLeft', 'MetaLeft', 'AltLeft', 'AltRight', 'ControlRight'],
+    functionKeys: [
+      'Backspace',
+      'Tab',
+      'Delete',
+      'CapsLock',
+      'Enter',
+      'ShiftLeft',
+      'ShiftRight',
+      'ControlLeft',
+      'MetaLeft',
+      'AltLeft',
+      'AltRight',
+      'ControlRight',
+    ],
   },
 
   inputAria: {
@@ -291,22 +372,20 @@ const KeyBoard = {
     },
   },
 
-
-  // method for creating new elements
-  createNewElement(tag, tagClass, tagText) {
-    const elm = document.createElement(tag);
-    elm.className = tagClass;
-    elm.innerHTML = tagText;
-    return elm;
+  createNewElement({ tag, tagClass, tagText }) {
+    const elements = document.createElement(tag);
+    elements.className = tagClass;
+    elements.innerHTML = tagText;
+    return elements;
   },
 
 
   // method for create KexBox element, arguments:array keys, array function keys
   createKeyBox(arrKeys, arrFuncKeys) {
-    const keyBox = this.createNewElement('div', 'keyboard', '');
+    const keyBox = this.createNewElement({ tag: 'div', tagClass: 'keyboard', tagText: '' });
 
     for (let i = 0; i < arrKeys.length; i += 1) {
-      const keysRow = this.createNewElement('div', 'keys-row', '');
+      const keysRow = this.createNewElement({ tag: 'div', tagClass: 'keys-row', tagText: '' });
 
       for (let j = 0; j < arrKeys[i].length; j += 1) {
         const key = arrKeys[i][j];
@@ -314,7 +393,7 @@ const KeyBoard = {
 
         if (arrFuncKeys.includes(key)) classesStr = `${classesStr} key--function`;
 
-        const keyElm = this.createNewElement('button', classesStr, '');
+        const keyElm = this.createNewElement({ tag: 'button', tagClass: classesStr, tagText: '' });
         keyElm.setAttribute('data-key-code', key);
         keysRow.append(keyElm);
       }
@@ -384,31 +463,31 @@ const KeyBoard = {
 
 
   // method type from screen keys
-  type(scr) {
+  type(char) {
     const text = this.elements.textAria.value;
-    const st = this.elements.textAria.selectionStart;
+    const start = this.elements.textAria.selectionStart;
     const end = this.elements.textAria.selectionEnd;
 
-    this.elements.textAria.value = `${text.substring(0, st)}${scr}${text.substring(end)}`;
-    this.elements.textAria.selectionStart = st + 1;
-    this.elements.textAria.selectionEnd = st + 1;
+    this.elements.textAria.value = `${text.substring(0, start)}${char}${text.substring(end)}`;
+    this.elements.textAria.selectionStart = start + 1;
+    this.elements.textAria.selectionEnd = start + 1;
   },
 
 
   // method type Backspace key
   typeBackspace() {
     const text = this.elements.textAria.value;
-    const st = this.elements.textAria.selectionStart;
+    const start = this.elements.textAria.selectionStart;
     const end = this.elements.textAria.selectionEnd;
 
-    if (st === end) {
-      this.elements.textAria.value = text.substring(0, st - 1) + text.substring(end);
-      this.elements.textAria.selectionStart = st - 1;
-      this.elements.textAria.selectionEnd = st - 1;
+    if (start === end) {
+      this.elements.textAria.value = text.substring(0, start - 1) + text.substring(end);
+      this.elements.textAria.selectionStart = start - 1;
+      this.elements.textAria.selectionEnd = start - 1;
     } else {
-      this.elements.textAria.value = text.substring(0, st) + text.substring(end);
-      this.elements.textAria.selectionStart = st;
-      this.elements.textAria.selectionEnd = st;
+      this.elements.textAria.value = text.substring(0, start) + text.substring(end);
+      this.elements.textAria.selectionStart = start;
+      this.elements.textAria.selectionEnd = start;
     }
     this.elements.textAria.focus();
   },
@@ -417,17 +496,17 @@ const KeyBoard = {
   // method delete symbol in textAria
   typeDelete() {
     const text = this.elements.textAria.value;
-    const st = this.elements.textAria.selectionStart;
+    const start = this.elements.textAria.selectionStart;
     const end = this.elements.textAria.selectionEnd;
 
-    if (st === end) {
-      this.elements.textAria.value = text.substring(0, st) + text.substring(end + 1);
-      this.elements.textAria.selectionStart = st;
-      this.elements.textAria.selectionEnd = st;
+    if (start === end) {
+      this.elements.textAria.value = text.substring(0, start) + text.substring(end + 1);
+      this.elements.textAria.selectionStart = start;
+      this.elements.textAria.selectionEnd = start;
     } else {
-      this.elements.textAria.value = text.substring(0, st) + text.substring(end);
-      this.elements.textAria.selectionStart = st;
-      this.elements.textAria.selectionEnd = st;
+      this.elements.textAria.value = text.substring(0, start) + text.substring(end);
+      this.elements.textAria.selectionStart = start;
+      this.elements.textAria.selectionEnd = start;
     }
     this.elements.textAria.focus();
   },
@@ -435,13 +514,13 @@ const KeyBoard = {
 
   // method toggle CapsLock
   toggleCapsLock() {
-    const elm = this.elements.keyBox.querySelector('button[data-key-code="CapsLock"]');
+    const element = this.elements.keyBox.querySelector('button[data-key-code="CapsLock"]');
     if (!this.inputAria.capsLockToggle) {
-      elm.classList.add('turn-on');
+      element.classList.add('turn-on');
       this.setCapsLock();
       this.inputAria.capsLockToggle = true;
     } else {
-      elm.classList.remove('turn-on');
+      element.classList.remove('turn-on');
       this.setShiftUpLayout();
       this.inputAria.capsLockToggle = false;
     }
@@ -479,18 +558,18 @@ const KeyBoard = {
 
   // method handle events of keyBoard: keydown, 'keyup'
   handleEvent(event) {
-    const elm = this.elements.keyBox.querySelector(`button[data-key-code=${event.code}]`);
-    if (!elm) return;
+    const element = this.elements.keyBox.querySelector(`button[data-key-code=${event.code}]`);
+    if (!element) return;
 
     switch (event.type) {
       case 'keydown':
-        elm.classList.add('active');
-        if (!(this.elements.functionKeys.includes(elm.dataset.keyCode))) {
-          const char = elm.textContent;
+        element.classList.add('active');
+        if (!(this.elements.functionKeys.includes(element.dataset.keyCode))) {
+          const char = element.textContent;
           this.type(char);
         }
-        if (this.elements.functionKeys.includes(elm.dataset.keyCode)) {
-          this.handleFunctionKeys(elm.dataset.keyCode);
+        if (this.elements.functionKeys.includes(element.dataset.keyCode)) {
+          this.handleFunctionKeys(element.dataset.keyCode);
         }
         if ((event.ctrlKey && event.altKey)) { // Ctrl+Shift - switch language
           this.switchLanguageLayout();
@@ -499,8 +578,8 @@ const KeyBoard = {
         break;
 
       case 'keyup':
-        elm.classList.remove('active');
-        if (elm.dataset.keyCode === 'ShiftLeft' || elm.dataset.keyCode === 'ShiftRight') {
+        element.classList.remove('active');
+        if (element.dataset.keyCode === 'ShiftLeft' || element.dataset.keyCode === 'ShiftRight') {
           this.setShiftUpLayout();
         }
         break;
@@ -513,22 +592,21 @@ const KeyBoard = {
   init() {
     // localStorage
     if (!(Object.prototype.hasOwnProperty.call(localStorage, 'virtualKeyboardLang'))) {
-      // if (localStorage.hasOwnProperty('virtualKeyboardLang')) {
       localStorage.setItem('virtualKeyboardLang', 'en');
     }
     this.inputAria.languageToggle = localStorage.getItem('virtualKeyboardLang');
 
     // add title
-    this.elements.title = this.createNewElement('h1', 'title', 'Virtual KeyBoard');
+    this.elements.title = this.createNewElement({ tag: 'h1', tagClass: 'title', tagText: 'Virtual KeyBoard' });
     document.body.append(this.elements.title);
 
     // add text aria
-    this.elements.textAria = this.createNewElement('textarea', 'textarea', '');
+    this.elements.textAria = this.createNewElement({ tag: 'textarea', tagClass: 'textarea', tagText: '' });
     document.body.append(this.elements.textAria);
     // this.elements.textAria.value = 'enter text here';
 
     // language layout legend
-    this.elements.title = this.createNewElement('p', 'legend', 'Ctrl + Alt - language switch EN/RU, OS Windows');
+    this.elements.title = this.createNewElement({ tag: 'p', tagClass: 'legend', tagText: 'Ctrl + Alt - language switch EN/RU, OS Windows' });
     document.body.append(this.elements.title);
 
     // add keyBox with keys
