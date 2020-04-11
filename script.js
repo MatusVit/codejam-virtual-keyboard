@@ -5,13 +5,13 @@ const KeyBoard = {
     textAria: null,
     keyBox: null,
     keys: [
-      ['Backquote', 'Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', 'Digit6', 'Digit7', 'Digit8', 'Digit9', 'Digit0', 'Minus', 'Equal', 'BackSpace'],
+      ['Backquote', 'Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', 'Digit6', 'Digit7', 'Digit8', 'Digit9', 'Digit0', 'Minus', 'Equal', 'Backspace'],
       ['Tab', 'KeyQ', 'KeyW', 'KeyE', 'KeyR', 'KeyT', 'KeyY', 'KeyU', 'KeyI', 'KeyO', 'KeyP', 'BracketLeft', 'BracketRight', 'Backslash', 'Delete'],
       ['CapsLock', 'KeyA', 'KeyS', 'KeyD', 'KeyF', 'KeyG', 'KeyH', 'KeyJ', 'KeyK', 'KeyL', 'Semicolon', 'Quote', 'Enter'],
       ['ShiftLeft', 'KeyZ', 'KeyX', 'KeyC', 'KeyV', 'KeyB', 'KeyN', 'KeyM', 'Comma', 'Period', 'Slash', 'ArrowUp', 'ShiftRight'],
-      ['ControlLeft', 'win', 'AltLeft', 'Space', 'AltRight', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'ControlRight'],
+      ['ControlLeft', 'MetaLeft', 'AltLeft', 'Space', 'AltRight', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'ControlRight'],
     ],
-    functionKeys: ['BackSpace', 'Tab', 'Delete', 'CapsLock', 'Enter', 'ShiftLeft', 'ShiftRight', 'ControlLeft', 'win', 'AltLeft', 'AltRight', 'ControlRight'],
+    functionKeys: ['Backspace', 'Tab', 'Delete', 'CapsLock', 'Enter', 'ShiftLeft', 'ShiftRight', 'ControlLeft', 'MetaLeft', 'AltLeft', 'AltRight', 'ControlRight'],
   },
 
   inputAria: {
@@ -35,7 +35,7 @@ const KeyBoard = {
         Digit0: '0',
         Minus: '-',
         Equal: '=',
-        BackSpace: 'BackSpace',
+        Backspace: 'Backspace',
         Tab: 'Tab',
         KeyQ: 'q',
         KeyW: 'w',
@@ -77,7 +77,7 @@ const KeyBoard = {
         Slash: '/',
         ShiftRight: 'Shift',
         ControlLeft: 'Ctrl',
-        win: 'win',
+        MetaLeft: 'win',
         AltLeft: 'Alt',
         Space: ' ',
         AltRight: 'Alt',
@@ -101,7 +101,7 @@ const KeyBoard = {
         Digit0: ')',
         Minus: '_',
         Equal: '+',
-        BackSpace: 'BackSpace',
+        Backspace: 'Backspace',
         Tab: 'Tab',
         KeyQ: 'Q',
         KeyW: 'W',
@@ -143,7 +143,7 @@ const KeyBoard = {
         Slash: '?',
         ShiftRight: 'Shift',
         ControlLeft: 'Ctrl',
-        win: 'win',
+        MetaLeft: 'win',
         AltLeft: 'Alt',
         Space: ' ',
         AltRight: 'Alt',
@@ -170,7 +170,7 @@ const KeyBoard = {
         Digit0: '0',
         Minus: '-',
         Equal: '=',
-        BackSpace: 'BackSpace',
+        Backspace: 'Backspace',
         Tab: 'Tab',
         KeyQ: 'й',
         KeyW: 'ц',
@@ -212,7 +212,7 @@ const KeyBoard = {
         Slash: '.',
         ShiftRight: 'Shift',
         ControlLeft: 'Ctrl',
-        win: 'win',
+        MetaLeft: 'win',
         AltLeft: 'Alt',
         Space: ' ',
         AltRight: 'Alt',
@@ -236,7 +236,7 @@ const KeyBoard = {
         Digit0: ')',
         Minus: '_',
         Equal: '+',
-        BackSpace: 'BackSpace',
+        Backspace: 'Backspace',
         Tab: 'Tab',
         KeyQ: 'Й',
         KeyW: 'Ц',
@@ -278,7 +278,7 @@ const KeyBoard = {
         Slash: ',',
         ShiftRight: 'Shift',
         ControlLeft: 'Ctrl',
-        win: 'win',
+        MetaLeft: 'win',
         AltLeft: 'Alt',
         Space: ' ',
         AltRight: 'Alt',
@@ -451,7 +451,7 @@ const KeyBoard = {
   // method handle FunctionKeys
   handleFunctionKeys(keyCode) {
     switch (keyCode) {
-      case 'BackSpace':
+      case 'Backspace':
         this.typeBackspace();
         break;
       case 'Delete':
