@@ -380,7 +380,6 @@ const KeyBoard = {
   },
 
 
-  // method for create KexBox element, arguments:array keys, array function keys
   createKeyBox(arrKeys, arrFuncKeys) {
     const keyBox = this.createNewElement({ tag: 'div', tagClass: 'keyboard', tagText: '' });
 
@@ -474,7 +473,6 @@ const KeyBoard = {
   },
 
 
-  // method type Backspace key
   typeBackspace() {
     const text = this.elements.textAria.value;
     const start = this.elements.textAria.selectionStart;
@@ -512,7 +510,6 @@ const KeyBoard = {
   },
 
 
-  // method toggle CapsLock
   toggleCapsLock() {
     const element = this.elements.keyBox.querySelector('button[data-key-code="CapsLock"]');
     if (!this.inputArea.capsLockToggle) {
@@ -527,7 +524,6 @@ const KeyBoard = {
   },
 
 
-  // method handle FunctionKeys
   handleFunctionKeys(keyCode) {
     switch (keyCode) {
       case 'Backspace':
