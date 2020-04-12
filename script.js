@@ -418,14 +418,19 @@
     },
 
 
+    setLayout({ query, language, shift }) {
+      const arrKeys = this.elements.keyBox.querySelectorAll(query);
+      for (let i = 0; i < arrKeys.length; i += 1) {
+        const elem = arrKeys[i];
+        const keySymbol = this.language[language][shift][elem.dataset.keyCode];
+        elem.innerHTML = keySymbol;
+      }
+    },
+
+
     // method for make keyboard language layout, argument:('en' or 'ru')
     setLanguageLayout(languageToggle) {
-      const arrKeys = this.elements.keyBox.querySelectorAll('.key');
-      for (let i = 0; i < arrKeys.length; i += 1) {
-        const element = arrKeys[i];
-        const keySymbol = this.language[languageToggle].lowerCase[element.dataset.keyCode];
-        element.innerHTML = keySymbol;
-      }
+      this.setLayout({ query: '.key', language: languageToggle, shift: 'lowerCase' });
       this.inputArea.languageToggle = languageToggle;
       localStorage.setItem('virtualKeyboardLang', languageToggle);
     },
@@ -433,25 +438,13 @@
 
     // method set uppercase keyboard when downKey Shift, argument:(not)
     setShiftDownLayout() {
-      const arrKeys = this.elements.keyBox.querySelectorAll('.key:not(.key--function)');
-      for (let i = 0; i < arrKeys.length; i += 1) {
-        const element = arrKeys[i];
-        const keySymbol = this.language[this.inputArea.languageToggle]
-          .shift[element.dataset.keyCode];
-        element.innerHTML = keySymbol;
-      }
+      this.setLayout({ query: '.key:not(.key--function)', language: this.inputArea.languageToggle, shift: 'shift' });
     },
 
 
     // method set lowercase keyboard when upKey Shift, argument:(not)
     setShiftUpLayout() {
-      const arrKeys = this.elements.keyBox.querySelectorAll('.key');
-      for (let i = 0; i < arrKeys.length; i += 1) {
-        const element = arrKeys[i];
-        const keySymbol = this.language[this.inputArea.languageToggle]
-          .lowerCase[element.dataset.keyCode];
-        element.innerHTML = keySymbol;
-      }
+      this.setLayout({ query: '.key', language: this.inputArea.languageToggle, shift: 'lowerCase' });
     },
 
 
@@ -476,7 +469,6 @@
       }
       this.setLanguageLayout(this.inputArea.languageToggle);
     },
-
 
     // method type from screen keys
     type(char) {
